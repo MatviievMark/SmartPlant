@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPlant Hydration Stick</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 50px 0;
+
+        }
+
+        h1, h2 {
+            color: #d0d0d0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding-top: 60px;
+            margin-top: -30%;
+
+        }
+
+        .btn {
+            background-color: #020202;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            width: 200px;
+            display: block;
+            margin: 20px auto;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #ababab;
+        }
+
+        /* Menu styling */
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0; /* This ensures it sticks to the top of the page */
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px 0;
+            z-index: 1000; /* This ensures it's above other content */
+        }
+
+
+        .sticky {
+            position: fixed;
+            top: 0;
+            left: 50%;  /* move the origin to the center of viewport */
+            transform: translateX(-50%); /* move the element back to ensure it's centered */
+            z-index: 1001;
+            width: 800px;  /* same width as your container */
+        }
+
+
+        .menu a {
+            color: #6c6c6c;
+            margin: 0 20px;
+            text-decoration: none;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .menu a:hover {
+            color: #2f2f2f;
+            font-weight: bold;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* adjust as necessary */
+            margin: auto;
+            min-height: 100vh;
+        }
+
+        .behind-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            letter-spacing: 3vw;
+            position: absolute;
+            font-size: 100px; /* adjust size as necessary */
+            opacity: 0.5; /* adjust opacity as necessary for better visibility */
+            z-index: 1; /* places text behind the image */
+            top: 50%; /* centers the text vertically */
+            left: 50%; /* centers the text horizontally */
+            transform: translate(-50%, 50%); /* centers the text perfectly */
+            color: #fff; /* adjust text color if necessary */
+        }
+        .behind-text2 {
+            font-family: 'Montserrat', sans-serif;
+            position: absolute;
+            font-size: 20px; /* adjust size as necessary */
+            opacity: 0.3; /* adjust opacity as necessary for better visibility */
+            z-index: 1; /* places text behind the image */
+            top: 50%; /* centers the text vertically */
+            left: 50%; /* centers the text horizontally */
+            transform: translate(-50%, 900%); /* centers the text perfectly */
+            color: #fff; /* adjust text color if necessary */
+            white-space: nowrap; /* Prevents the text from wrapping */
+        }
+
+
+        .image-container img {
+            position: relative;
+            width: 100%;
+            z-index: 2; /* places the image in front of the text */
+        }
+
+    /*    Container 1*/
+        .section {
+            display: flex;     /* Use Flexbox for the layout */
+            justify-content: space-between; /* Separate text and image */
+            align-items: center; /* Vertically center content */
+            padding: 30px;     /* Increase overall padding */
+
+        }
+
+
+        .description-text {
+            flex: 1;           /* Take up half the space */
+            padding-right: 40px; /* Increase the space between the text and the image */
+            text-align: right;
+        }
+
+
+        .description-text h2, .description-text p {
+            font-size: 40px; /* Increase font size */
+            margin-bottom: 20px; /* Add more space between text elements */
+            margin-top: -50%;
+        }
+
+        .description-image {
+            flex: 1;           /* Take up the other half of the space */
+            margin-top: -30%;
+
+        }
+
+        .description-image img {
+            width: 150%;      /* Make the image responsive to its container */
+            max-width: 600px; /* Increase the maximum width of the image */
+        }
+
+        .description-text2 {
+            flex: 1;           /* Take up half the space */
+            padding-right: 40px; /* Increase the space between the text and the image */
+            text-align: left;
+            margin-bottom: 200px;
+        }
+
+
+        .description-text2 h2, .description-text2 p {
+            font-size: 15px; /* Increase font size */
+            margin-bottom: 20px; /* Add more space between text elements */
+            /*margin-top: -60%;*/
+        }
+
+        .description-text2 ul {
+            list-style-type: disc; /* or you can use 'none' if you don't want bullet points */
+            padding-left: 20px; /* Adjust as needed */
+        }
+
+        .description-text2 li {
+            margin-bottom: 15px; /* This will add more space below each list item. Adjust as needed. */
+            font-size: 25px; /* Increase font size */
+            /*margin-top: -50%;*/
+        }
+
+        .section#buyNow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* This will make the section take up the full height of the viewport */
+            background-color: #000000; /* A light grey background for the section */
+        }
+
+        .price-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 100;
+            font-size: 100px; /* Adjust the font size to your liking */
+            text-align: left;
+            margin-bottom: 10px; /* Adds a little space between the price text and the button */
+            color: #ffffff; /* Black text color */
+        }
+
+        .buyNow-button {
+            width: 200px; /* Set width */
+            height: 50px; /* Set a fixed height to make it square */
+            font-size: 20px; /* Adjust font size as needed */
+            background-color: #000; /* Black button color */
+            color: #fff; /* White text color */
+            border: 2px solid #fff; /* White border */
+            border-radius: 15px; /* Slightly rounded corners */
+            cursor: pointer; /* Hand cursor on hover */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation effect for hover */
+            display: flex; /* These styles are used */
+            justify-content: center; /* to center the text */
+            align-items: center; /* both horizontally and vertically */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 100;
+        }
+
+        .buyNow-button:hover {
+            transform: translateY(-3px); /* Move button up slightly */
+            box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.3); /* Increase shadow depth on hover */
+        }
+
+        .buyNow-button:active {
+            transform: translateY(1px); /* Move button down slightly when clicked */
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Reduce shadow depth on active click */
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+
+<div class="container">
+    <div class="menu">
+        <a href="#product-description">WHAT</a>
+        <a href="#unique-selling-points">FEATURES</a>
+        <a href="#target-audience">WHO FOR</a>
+        <a href="#statistics">WHY</a>
+        <a href="#buyNow">BUY</a>
+    </div>
+
+    <div class="image-container">
+        <div class="behind-text">SmartPlant</div>
+        <div class="behind-text2"> Gen 2:15 | And the LORD God took the man, and put him into the garden of Eden to dress it and to keep it.</div>
+        <img src="photo1.png" alt="SmartPlant Hydration Stick" />
+    </div>
+
+    <!-- Menu -->
+
+    <div class="section" id="product-description">
+        <div class="description-text">
+<!--            <h2>What is this?</h2>-->
+            <p>A sleek tool that fits into any plant pot, helping you know exactly when to water. Suitable for indoor and outdoor plants.</p>
+        </div>
+        <div class="description-image">
+            <img src="photo2.png" alt="SmartPlant Hydration Stick" />
+        </div>
+    </div>
+
+
+    <div class="section" id="unique-selling-points">
+        <div class="description-text2">
+            <!-- <h2>What is this?</h2> -->
+            <ul>
+                <li>App Alerts: Get watering notifications on your phone.</li>
+                <li>Color-Coded LED: Blue means good, yellow means it's time, and red is urgent.</li>
+                <li>Solar Charging: Perfect for outdoor plants.</li>
+                <li>Custom Settings: Choose your plant type in the app.</li>
+                <li>Stylish Design: Looks great with any pot.</li>
+            </ul>
+        </div>
+        <div class="description-image">
+            <img src="photo3.png" alt="SmartPlant Hydration Stick" />
+        </div>
+    </div>
+
+
+    <div class="section" id="target-audience">
+        <div class="description-text2">
+            <ul>
+                <li>Busy city dwellers with indoor plants.</li>
+                <li>New gardeners wanting to get it right.</li>
+                <li>Travelers who love their plants.</li>
+                <li>Plant lovers who like tech too.</li>
+            </ul>
+        </div>
+        <div class="description-image">
+            <img src="photo4.png" alt="SmartPlant Hydration Stick" />
+        </div>
+    </div>
+
+    <div class="section" id="statistics">
+        <div class="description-text2">
+            <ul>
+                <li>Plants boost productivity and mood.</li>
+                <li>Plant sales are booming, but many die from poor watering.</li>
+                <li>Cities are crowded; people want indoor greenery.</li>
+                <li>"Plant Parent" is a thing, and they need tech tools.</li>
+                <li>More people are buying smart devices.</li>
+                <li>People are traveling but want their plants to thrive.</li>
+            </ul>
+        </div>
+        <div class="description-image">
+            <img src="photo5.png" alt="SmartPlant Hydration Stick" />
+        </div>
+    </div>
+
+
+    <div class="section" id="buyNow">
+        <div class = "buyNow">
+            <p class = "verse">Everything that lives and moves about will be food for you. Just as I gave you the green plants, I now give you everything. - Gen 9:3</p>
+            <p class="price-text">Starting at $29.99</p>
+            <button class="buyNow-button">Buy Now</button>
+        </div>
+    </div>
+
+
+
+</div>
+
+<script>
+    let sections = document.querySelectorAll('.section');
+    let currentSection = 0;
+    let isScrolling = false; // Flag to prevent simultaneous scroll triggers
+    let menuHeight = document.querySelector('.menu').offsetHeight; // get the height of the sticky menu
+
+    // Function to move to the next or previous section
+    function moveToSection(direction) {
+        // If we're already scrolling, return
+        if (isScrolling) return;
+
+        isScrolling = true;
+
+        // Update current section index based on direction
+        currentSection += direction;
+
+        // Ensure current section is within bounds
+        if (currentSection < 0) {
+            currentSection = 0;
+            isScrolling = false;
+            return;
+        }
+
+        if (currentSection >= sections.length) {
+            currentSection = sections.length - 1;
+            isScrolling = false;
+            return;
+        }
+
+        // Scroll to the current section and reset isScrolling flag once done
+        window.scrollTo({
+            top: sections[currentSection].offsetTop - menuHeight, // adjust the scrollTo position by subtracting the menuHeight
+            behavior: "smooth",
+            left: 0
+        });
+
+        setTimeout(() => {
+            isScrolling = false;
+        }, 1000); // 1 second should be ample time for the smooth scroll to complete
+    }
+
+    document.addEventListener('wheel', function(event) {
+        // If at the top of the page and trying to scroll up, or at the bottom and trying to scroll down, allow default behavior
+        if ((window.scrollY <= 0 && event.deltaY < 0) || (window.scrollY + window.innerHeight >= document.body.scrollHeight && event.deltaY > 0)) {
+            return;
+        }
+
+        // Detect scroll direction
+        let direction = event.deltaY > 0 ? 1 : -1;
+
+        // Move to the corresponding section
+        moveToSection(direction);
+
+        // Prevent default behavior
+        event.preventDefault();
+    }, { passive: false });
+
+    let navbar = document.querySelector('.menu');
+    let sticky = navbar.offsetTop;  // Get the original position of the navbar
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+            navbar.style.width = document.querySelector('.container').offsetWidth + "px"; // ensure width is same as container
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    });
+
+    window.addEventListener("load", function() {
+        window.scrollTo(0, 0);
+    });
+
+    let navLinks = document.querySelectorAll('.menu a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // Extract the target section's ID from the href attribute
+            let targetId = this.getAttribute('href').slice(1);
+            let targetSection = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetSection.offsetTop - menuHeight,
+                behavior: "smooth",
+                left: 0
+            });
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let lazyImages = [].slice.call(document.querySelectorAll("img[loading='lazy']"));
+
+        if ("IntersectionObserver" in window) {
+            let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        let lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImage.srcset = lazyImage.dataset.srcset;
+                        lazyImage.classList.remove("lazy");
+                        lazyImageObserver.unobserve(lazyImage);
+                    }
+                });
+            });
+
+            lazyImages.forEach(function(lazyImage) {
+                lazyImageObserver.observe(lazyImage);
+            });
+        } else {
+            // Fallback for browsers that do not support Intersection Observer
+            lazyImages.forEach(function(lazyImage) {
+                lazyImage.src = lazyImage.dataset.src;
+                lazyImage.srcset = lazyImage.dataset.srcset;
+            });
+        }
+    });
+
+
+</script>
+
+</body>
+
+</html>
